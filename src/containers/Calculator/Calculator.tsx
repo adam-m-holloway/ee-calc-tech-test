@@ -1,42 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { evaluate, round } from 'mathjs';
 
 export const Calculator = () => {
+  const [calcValue, setCalcValue] = useState('');
+
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const inputValue = (event.target as HTMLInputElement).value;
+
+    switch (inputValue) {
+      case 'x':
+        setCalcValue(calcValue + inputValue.replace('x', '*'));
+        break;
+      case '÷':
+        setCalcValue(calcValue + inputValue.replace('÷', '/'));
+        break;
+      case '=':
+        setCalcValue(evaluate(calcValue));
+        break;
+      case 'Clear':
+        setCalcValue('');
+        break;
+      default:
+        setCalcValue(calcValue + inputValue);
+        break;
+    }
+  };
+
+  const operators = ['x', '-', '+', '/', '.', '=', 'Clear'];
+
+  const buildRow = (array: any) =>
+    array.map((item: number | string, index: number) => {
+      const isOperator = new Set(operators).has(`${item}`) ? 'is-operator' : '';
+
+      return (
+        <button
+          key={`button-${index}`}
+          className={isOperator}
+          value={item}
+          onClick={(e) => handleClick(e)}
+        >
+          {item}
+        </button>
+      );
+    });
+
   return (
     <div>
       <div>
-        <input type="text" />
+        <div className="calc-entry" data-testid="entry">
+          {calcValue}
+        </div>
       </div>
 
-      <div>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>x</button>
-      </div>
+      <div>{buildRow([7, 8, 9, 'x'])}</div>
+      <div>{buildRow([4, 5, 6, '-'])}</div>
+      <div>{buildRow([1, 2, 3, '+'])}</div>
+      <div>{buildRow([0, '.', '=', '÷'])}</div>
 
       <div>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>-</button>
-      </div>
-
-      <div>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>+</button>
-      </div>
-
-      <div>
-        <button>0</button>
-        <button>.</button>
-        <button>=</button>
-        <button>/</button>
-      </div>
-
-      <div>
-        <button>Clear</button>
+        <div>{buildRow(['Clear'])}</div>
       </div>
     </div>
   );
