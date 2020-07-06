@@ -32,3 +32,7 @@ Run project using `yarn start`
 Run tests using `yarn test`
 
 App should automatically run on [http://localhost:3000/](http://localhost:3000/)
+
+## Screenshot of app
+
+![EE Calculator screenshot](src/assets/images/ee-calc-screenshot.png)
