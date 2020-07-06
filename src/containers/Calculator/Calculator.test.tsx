@@ -16,6 +16,12 @@ describe('Calculator', () => {
     });
   });
 
+  it('should render the logo', () => {
+    render(<Calculator />);
+
+    expect(screen.getByAltText('EE logo')).toBeInTheDocument();
+  });
+
   it('should add two values', () => {
     const { getByText, getByTestId } = render(<Calculator />);
 
