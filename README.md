@@ -4,15 +4,15 @@ Version number: 04fa1404c2b3b7be0e5909d4ba93d1332bc76e98
 
 ## Overview
 
-- app scaffolded with create-react-app TypeScript for purpose of speed and simplicity
+- app scaffolded with [create-react-app TypeScript](https://create-react-app.dev/docs/adding-typescript/) for purpose of speed and simplicity
 - TypeScript has been used for type safety
-- React Testing Library has been used to unit test all features
+- [React Testing Library](https://www.npmjs.com/package/@testing-library/react) has been used to unit test all features
 - TDD approach taken
 - Styling done with CSS
 
 ## Things I'd do with more time
 
-- Use Styled Components for styling and pass props down to style symbols
+- Use [Styled Components](https://www.npmjs.com/package/styled-components) for styling and pass props down to style symbols
 - Improve UI
 - Create config file using variables for reused CSS values such as colours, font size etc.
 
