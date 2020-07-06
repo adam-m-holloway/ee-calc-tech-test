@@ -6,6 +6,13 @@ describe('Calculator', () => {
   it('should render the calculator', () => {
     render(<Calculator />);
 
-    expect(screen.getByText('Calculator component')).toBeInTheDocument();
+    for (let i = 0; i < 10; i++) {
+      expect(screen.getByText(`${i}`)).toBeInTheDocument();
+    }
+
+    const symbols = ['x', '-', '.', '+', '=', '/', 'Clear'];
+    symbols.forEach((symbol) => {
+      expect(screen.getByText(symbol)).toBeInTheDocument();
+    });
   });
 });
